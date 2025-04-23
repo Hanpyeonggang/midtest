@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Always Green!</title>
+  
+  <style>
+    @font-face {
+  font-family: 'CirrusCumulus';
+  src: url('mid web/CirrusCumulus.woff') format('woff');
+}
+@font-face {
+  font-family: 'SUITE';
+  src: url('mid web/SUITE-Variable.woff2') format('woff2');
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'SUITE', sans-serif;
+  overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+* { box-sizing: inherit; }
+section {padding-bottom: 50px; }
+nav {position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;background: rgba(0, 0, 0, 0.3); border-bottom: 2px solid black;padding: 3px 40px;display: flex; justify-content: space-between; align-items: center;}
+footer {background-color: #00FF2F; font-size: 1rem; color: black;}
+.img-full {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px;}
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;}
+.section-desc {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #ccc;}
+.green-text {
+  color: #00FF33;
+  font-family: 'CirrusCumulus', cursive;}
+.black-bg { background-color: black; color: white; }
+.white-bg { background-color: white; color: black; }
+.gradient-top { background: linear-gradient(to bottom, white, black); height: 300px; }
+.logo-img { height: 48px; width: auto; }
+.nav-links a {background: black; color: white; text-decoration: none;padding: 8px 16px; border-radius: 4px; margin-left: 10px;font-weight: 500;}
+.nav-links a:hover { background-color: #00FF2F; }
+.intro {
+  position: relative; width: 100vw; height: 100vh; overflow: hidden;}
+.intro-bg {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center; z-index: 0;}
+.intro-content {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  height: 100%; padding-top: 80px;}
+.intro-logo {
+  width: 1300px; max-width: 90%; height: auto;
+  margin-top: -10px; margin-bottom: 20px;}
+.q1-image {
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  display: block;
+  margin: 0 auto;}
+.q1-section {
+  background: linear-gradient(to bottom, black, white); 
+  padding: 120px 20px;
+  text-align: center;}
+.text-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  border-top: 2px solid black;
+  padding-top: 40px;
+  max-width: 1000px;
+  margin: 0 auto 80px;
+  text-align: left;}
+.text-line .title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: 180px;}
+.text-line .desc {
+  flex: 1;
+  font-size: 1.2rem;
+  padding-left: 300px;}
+.gif-wrapper {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto 80px;
+}
+.gif-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.gif-overlay {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: 'CirrusCumulus', cursive;
+  font-size: 3rem;
+  line-height: 1.4;
+  text-align: center;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.plantcare-logo {
+ max-width: 80%;
+}
+.plantcare-gif {
+  width: 100%; height: 300px;
+  background: #ccc; color: black;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+}
+.plantcare-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center; }
+.review-box {background: black;
+  color: white;
+  width: 320px;
+  height: 200px;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);}
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;}
+.reviewer {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.1rem;}
+.reviewer-icon {
+  width: 20px;
+  height: 20px;
+  background-color: #00FF33;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.stars {
+  color: #00FF33;
+  font-size: 1rem;
+}
+
+.review-content {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.review-slider-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.review-slider {
+  display: flex;
+  gap: 24px;
+  animation: slide-left 30s linear infinite;
+  width: max-content;
+}
+
+@keyframes slide-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.footer-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+.footer-main {
+  display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 30px;
+}
+.footer-logo img { width: 120px; height: auto; }
+.footer-info { max-width: 600px; text-align: left; margin-left: 40px; }
+.footer-info h3 {
+  font-family: 'CirrusCumulus'; font-size: 1.8rem; margin-bottom: 10px;
+}
+.footer-info p, .footer-links a {
+  font-family: 'SUITE', sans-serif; font-size: 1rem;
+}
+.footer-links {
+  text-align: center; font-size: 0.95rem;
+}
+.footer-links a {
+  color: black; text-decoration: none; margin: 0 5px;
+}
+.footer-links a:hover { text-decoration: underline; }
+.footer-top-line {
+  width: 100%;
+  height: 2px;
+  background-color: black;
+}
+.green-bg {
+  background-color: #00FF33;
+  color: black;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.cta-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta-inner h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-family: 'SUITE', cursive;
+}
+
+.cta-inner p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  font-family: 'SUITE', sans-serif;
+}
+
+.cta-button {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 16px 32px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #333;
+}
+
+  </style>
+</head>
+<body>
+
+  
+  <nav>
+    <div class="logo">
+      <img src="logo.png" alt="Always Green 로고" class="logo-img" />
+    </div>
+    <div class="nav-links">
+      <a href="#">로그인</a>
+      <a href="#">회원가입</a>
+    </div>
+  </nav>
+
+  
+  <section class="intro">
+    <img src="bg1.jpg" alt="배경 이미지" class="intro-bg" />
+    <div class="intro-content">
+      <img src="flowerhome.png" alt="인트로 로고" class="intro-logo" />
+    </div>
+  </section>
+
+ 
+  <section class="q1-section">
+    <div class="q1-container">
+      <img src="kill.png" alt="질문 이미지" class="q1-image" />
+    </div>
+  </section>
+
+  
+  <section class="welcome-section white-bg">
+    <div class="container">
+      <img src="welcome.gif" alt="Welcome" class="img-full" />
+      <div class="text-line">
+        <div class="title">서비스 소개</div>
+        <div class="desc">
+          매년 새로운 다짐으로 식물을 들이지만, <br>
+          어느샌가 말라버린 화분만 남겨졌나요?<br>
+          그런 당신을 위해 등장한 초록빛 기적, <strong>Always Green!</strong>은<br>
+          현실의 식물 킬러도 <strong>안전하게, 재밌게, 귀엽게!</strong><br>
+          식물을 키울 수 있도록 만든 사이버 식물 키우기 서비스입니다.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="gif-wrapper">
+    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTZ0Z2ZmdW10c2RvYjIxbWlncWRrMmg1c28wdDRmZ25sM3JjeWl1aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/OH9zWD6tKD9E5QL7Ru/giphy.gif" alt="play gif">
+    <div class="gif-overlay">Let’s play<br>Always Green!</div>
+  </section>
+
+
+  <section class="white-bg">
+    <div class="text-line">
+      <div class="title">게임처럼 즐기는<br>식물 키우기</div>
+      <div class="desc">
+        <strong>Always Green!</strong>은 단순한 가드닝 시뮬레이션이 아닙니다.<br>
+        게임처럼 미션을 깨고, 경험치를 쌓고, 아이템을 수집하며<br>
+        식물과 함께 성장하는 진짜 재미를 느낄 수 있어요! 🌱💪
+      </div>
+    </div>
+  </section>
+
+  
+  <div class="gradient-top"></div>
+
+ 
+  <section class="plantcare-section black-bg">
+    <div class="plantcare-inner">
+      <img src="logo1.png" alt="Plant Care 로고" class="plantcare-logo" />
+      <h2 class="section-title">가상 식물 키우기 시뮬레이션</h2>
+      <p class="section-desc">물 주기, 햇빛 받기, 비료 주기 등 현실감 있는 식물 관리를 할 수 있어요!</p>
+      <div class="plantcare-gif">GIF 첨부 예정</div>
+    </div>
+  </section>
+
+  <section class="plantcare-section black-bg">
+    <div class="plantcare-inner">
+      <img src="logo2.png" alt="Plant Care 로고" class="plantcare-logo" />
+      <h2 class="section-title">내 맘대로 커스터마이징</h2>
+      <p class="section-desc">식물, 화분, 배경, 장식 아이템까지 무제한으로 꾸며요!</p>
+      <div class="plantcare-gif">GIF 첨부 예정</div>
+    </div>
+  </section>
+
+  <section class="plantcare-section black-bg">
+    <div class="plantcare-inner">
+      <img src="logo3.png" alt="Plant Care 로고" class="plantcare-logo" />
+      <h2 class="section-title">AR/ 현실 연계 서비스</h2>
+      <p class="section-desc">화분을 직접 실제 나의 방에 배치해 볼 수 있어요!</p>
+      <div class="plantcare-gif">GIF 첨부 예정</div>
+    </div>
+  </section>
+<section class="welcome-section white-bg">
+    <div class="container">
+      <div class="text-line">
+        <div class="title">실시간 후기 및<br>커뮤니티 지원</div>
+        <div class="desc">
+          식물을 키우면서 후기를 공유하고,<br>다른 유저들과 경험을 나누세요.<br>사진을 올리고, 좋아요와 댓글을 받을 수도 있어요!<br>
+커뮤니티에서 내 식물을 자랑해보세요!
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="white-bg">
+  <div class="plantcare-inner">
+    <img src="logo4.png" alt="Plant Care 로고" class="plantcare-logo" />
+    <h2 class="section-title">후기를 살펴보세요!</h2>
+    <p class="section-desc">“나의 식물 이렇게까지 귀여워?” 자랑하는 개인들의 후기들 가득</p>
+
+    <div class="review-slider-wrapper">
+      <div class="review-slider">
+        <div class="review-box">
+          <div class="review-header">
+            <div class="reviewer"><div class="reviewer-icon"></div> 우와와</div>
+            <div class="stars">★★★★★</div>
+          </div>
+          <div class="review-content">Amazing product, highly recommended</div>
+        </div>
+
+        <div class="review-box">
+          <div class="review-header">
+            <div class="reviewer"><div class="reviewer-icon"></div> 조윤정</div>
+            <div class="stars">★★★★★</div>
+          </div>
+          <div class="review-content">내 사이버 몬스테라가 이렇게나 컸어요!<br>식물이 안죽고 무럭무럭 자라는 거였구나!!!!</div>
+        </div>
+
+        <div class="review-box">
+          <div class="review-header">
+            <div class="reviewer"><div class="reviewer-icon"></div> 한준희</div>
+            <div class="stars">★★★★★</div>
+          </div>
+          <div class="review-content">Excellent service, will buy again</div>
+        </div>
+        <div class="review-box">
+          <div class="review-header">
+            <div class="reviewer"><div class="reviewer-icon"></div> 한평강</div>
+            <div class="stars">★★★★★</div>
+          </div>
+          <div class="review-content">나같은 똥손도 식물을 키울수잇다니 정말 대단한 서비스이다...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</section>
+<section class="white-bg">
+  <div class="plantcare-inner">
+    <img src="logo5.png" alt="Plant Care 로고" class="plantcare-logo" />
+    <h2 class="section-title">나의 정원을 자랑해요!</h2>
+    <p class="section-desc">사람들과 식물을 함께 꾸며가며, 온라인으로 소통할 수 있어요</p>
+    <div class="share-image" style="background: #ccc; height: 300px; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+       예정
+    </div>
+  </div>
+</section>
+<section class="cta-section white-bg">
+  <div class="cta-inner plantcare-inner">
+    <h2>지금 바로 시작하세요!</h2>
+    <p>당신만의 초록 세상을 지금 만들어보세요 🌱</p>
+    <a href="#" class="cta-button">회원가입 하러가기</a>
+  </div>
+</section>
+
+  <div class="footer-top-line"></div>
+  <footer>
+    <div class="footer-wrapper">
+      <div class="footer-main">
+        <div class="footer-logo">
+          <img src="logo.png" alt="Always Green Logo" />
+        </div>
+        <div class="footer-info">
+          <h3>Information</h3>
+          <p>Company: Always Green!</p>
+          <p>Telephone: +82-666-6666</p>
+          <p>Email: han.pk0193@gmail.com</p>
+          <p>Representatives: Han Pyeong gang</p>
+          <p>Copyright © 2025 Always Green!. All rights reserved.</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#">사이트 이용약관</a> |
+        <a href="#">개인정보 보호정책</a> |
+        <a href="#">쿠키 정책</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
